@@ -6,7 +6,7 @@
 
 (defn ask [player fun-decison-continue]
   (if (fun-decison-continue player)
-    (let [player-with-MoreCard (Cards/moreCard player)]
+    (let [player-with-MoreCard (Cards/more-card player)]
       (card/print-player player-with-MoreCard)
       (recur player-with-MoreCard fun-decison-continue))
     player))

@@ -1,15 +1,14 @@
 (ns Cards
-  (:require [Rules]
-            [Cards :as Cards]))
+  (:require [Rules]))
 
-(defn newCard []
-
+(defn new-card []
   (inc (rand-int 13)))
 
-
-(defn moreCard [player]
-  (let [card (Cards/newCard)
+(defn more-card [player]
+  (let [card (new-card)
         cards (conj (:cards player) card)
-        newPlayer (update player :cards conj card)
-        points (Rules/contCards cards)]
-    (assoc newPlayer :points points)))
+        points (->> cards
+                    (map Rules/convertJQKTo10)
+                    (map Rules/cardATo11)
+                    (apply +))]
+    (assoc player :cards cards :points points)))

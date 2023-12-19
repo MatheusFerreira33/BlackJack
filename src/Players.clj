@@ -4,8 +4,8 @@
 
 
 (defn player [name]
-  (let [card1 (Cards/newCard)
-        card2 (Cards/newCard)
+  (let [card1 (Cards/new-card)
+        card2 (Cards/new-card)
         cards [card1, card2]
         count (Rules/contCards cards)]
     {:player-name name
